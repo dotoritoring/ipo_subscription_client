@@ -1,0 +1,35 @@
+{
+  "ipos": [
+    {
+      "id": "1",
+      "name": "ABC전자",
+      "price": 25000,
+      "startDate": "2026-09-29",
+      "endDate": "2026-09-30",
+      "totalQuantity": 100000,
+      "remainingQuantity": 12340,
+      "status": "OPEN"
+    },
+    {
+      "id": "2",
+      "name": "XYZ바이오",
+      "price": 20000,
+      "startDate": "2026-10-01",
+      "endDate": "2026-10-02",
+      "totalQuantity": 50000,
+      "remainingQuantity": 50000,
+      "status": "WAITING"
+    },
+    {
+      "id": "3",
+      "name": "테크솔루션",
+      "price": 15000,
+      "startDate": "2026-09-25",
+      "endDate": "2026-09-26",
+      "totalQuantity": 30000,
+      "remainingQuantity": 0,
+      "status": "CLOSED"
+    }
+  ],
+  "subscriptions": []
+}
