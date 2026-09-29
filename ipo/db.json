@@ -1,4 +1,11 @@
 {
+  "users": [
+    {
+      "id": "1",
+      "name": "홍길동",
+      "balance": 4975000
+    }
+  ],
   "ipos": [
     {
       "id": "1",
@@ -7,7 +14,7 @@
       "startDate": "2026-09-29",
       "endDate": "2026-09-30",
       "totalQuantity": 100000,
-      "remainingQuantity": 12340,
+      "remainingQuantity": 9732,
       "status": "OPEN"
     },
     {
@@ -29,7 +36,197 @@
       "totalQuantity": 30000,
       "remainingQuantity": 0,
       "status": "CLOSED"
+    },
+    {
+      "id": "4",
+      "name": "미래로봇",
+      "price": 32000,
+      "startDate": "2026-09-28",
+      "endDate": "2026-09-29",
+      "totalQuantity": 120000,
+      "remainingQuantity": 120000,
+      "status": "WAITING"
+    },
+    {
+      "id": "5",
+      "name": "그린에너지",
+      "price": 15000,
+      "startDate": "2026-09-20",
+      "endDate": "2026-09-21",
+      "totalQuantity": 70000,
+      "remainingQuantity": 0,
+      "status": "CLOSED"
+    },
+    {
+      "id": "6",
+      "name": "넥스트AI",
+      "price": 45000,
+      "startDate": "2026-09-30",
+      "endDate": "2026-10-01",
+      "totalQuantity": 90000,
+      "remainingQuantity": 90000,
+      "status": "WAITING"
+    },
+    {
+      "id": "7",
+      "name": "바이오큐어",
+      "price": 28000,
+      "startDate": "2026-10-02",
+      "endDate": "2026-10-03",
+      "totalQuantity": 60000,
+      "remainingQuantity": 60000,
+      "status": "WAITING"
+    },
+    {
+      "id": "8",
+      "name": "스마트모빌리티",
+      "price": 22000,
+      "startDate": "2026-09-29",
+      "endDate": "2026-09-30",
+      "totalQuantity": 110000,
+      "remainingQuantity": 47800,
+      "status": "OPEN"
+    },
+    {
+      "id": "9",
+      "name": "에코솔루션",
+      "price": 12500,
+      "startDate": "2026-09-18",
+      "endDate": "2026-09-19",
+      "totalQuantity": 55000,
+      "remainingQuantity": 0,
+      "status": "CLOSED"
+    },
+    {
+      "id": "10",
+      "name": "클라우드랩",
+      "price": 30000,
+      "startDate": "2026-10-05",
+      "endDate": "2026-10-06",
+      "totalQuantity": 75000,
+      "remainingQuantity": 75000,
+      "status": "WAITING"
+    },
+    {
+      "id": "11",
+      "name": "테라반도체",
+      "price": 38000,
+      "startDate": "2026-10-07",
+      "endDate": "2026-10-08",
+      "totalQuantity": 95000,
+      "remainingQuantity": 95000,
+      "status": "WAITING"
+    },
+    {
+      "id": "12",
+      "name": "메디웰",
+      "price": 17000,
+      "startDate": "2026-10-09",
+      "endDate": "2026-10-10",
+      "totalQuantity": 65000,
+      "remainingQuantity": 65000,
+      "status": "WAITING"
+    },
+    {
+      "id": "13",
+      "name": "새싹",
+      "price": 7000,
+      "startDate": "2026-09-29",
+      "endDate": "2026-10-01",
+      "totalQuantity": 100,
+      "remainingQuantity": 0,
+      "status": "OPEN"
     }
   ],
-  "subscriptions": []
+  "subscriptions": [
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 2500,
+      "amount": 62500000,
+      "createdAt": "2026-09-29T06:04:58.468Z",
+      "id": "l7Sjl8kC9B0"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 1,
+      "amount": 25000,
+      "createdAt": "2026-09-29T06:05:12.027Z",
+      "id": "fgJMrtmdgSQ"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 2,
+      "amount": 50000,
+      "createdAt": "2026-09-29T06:09:54.709Z",
+      "id": "p6ZvFVy9_04"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 1,
+      "amount": 25000,
+      "createdAt": "2026-09-29T06:10:37.437Z",
+      "id": "26NEPKRoxYU"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 1,
+      "amount": 25000,
+      "createdAt": "2026-09-29T06:10:46.373Z",
+      "id": "E5--skd1nEM"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 1,
+      "amount": 25000,
+      "createdAt": "2026-09-29T06:23:24.812Z",
+      "id": "4NbzqhIrOVA"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 100,
+      "amount": 2500000,
+      "createdAt": "2026-09-29T06:26:25.789Z",
+      "id": "L0NSwvdW6Ak"
+    },
+    {
+      "userId": "1",
+      "ipoId": "13",
+      "quantity": 1,
+      "amount": 7000,
+      "createdAt": "2026-09-29T06:34:28.077Z",
+      "id": "Cm_j9oQVOYM"
+    },
+    {
+      "userId": "1",
+      "ipoId": "13",
+      "quantity": 99,
+      "amount": 693000,
+      "createdAt": "2026-09-29T06:34:35.628Z",
+      "id": "faKpAOmachY"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 1,
+      "amount": 25000,
+      "createdAt": "2026-09-29T06:38:48.856Z",
+      "id": "qI8FGb4etMM"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 1,
+      "amount": 25000,
+      "createdAt": "2026-09-29T08:46:05.802Z",
+      "id": "ILOHIHC5A-A"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
