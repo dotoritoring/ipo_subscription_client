@@ -3,7 +3,7 @@
     {
       "id": "1",
       "name": "홍길동",
-      "balance": 4975000
+      "balance": 4925000
     }
   ],
   "ipos": [
@@ -14,7 +14,7 @@
       "startDate": "2026-09-29",
       "endDate": "2026-09-30",
       "totalQuantity": 100000,
-      "remainingQuantity": 9732,
+      "remainingQuantity": 9730,
       "status": "OPEN"
     },
     {
@@ -226,6 +226,22 @@
       "amount": 25000,
       "createdAt": "2026-09-29T08:46:05.802Z",
       "id": "ILOHIHC5A-A"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 1,
+      "amount": 25000,
+      "createdAt": "2026-09-29T18:00:26.475Z",
+      "id": "F1dRdNE"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 1,
+      "amount": 25000,
+      "createdAt": "2026-09-29T19:00:39.240Z",
+      "id": "nMOGZ64"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

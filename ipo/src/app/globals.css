@@ -219,7 +219,7 @@ main > h1 {
 .quantity-bar-fill {
   height: 100%;
   border-radius: 999px;
-  background: #3182f6;
+  background: #20c997;
 }
 
 .quantity-progress > span {
@@ -475,3 +475,142 @@ main > h1 {
   font-weight: 700;
 }
 
+/* 내 청약 내역 */
+
+.subscription-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.subscription-page-header h1 {
+  margin: 0 0 8px;
+}
+
+.subscription-page-header p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 42px;
+  padding: 0 16px;
+
+  border-radius: 8px;
+  background: #3182f6;
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background: #2275e6;
+}
+
+.subscription-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.subscription-card {
+  padding: 24px;
+
+  border: 1px solid #e5e8eb;
+  border-radius: 16px;
+
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.subscription-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.subscription-card-header h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.subscription-card-header p {
+  margin: 0;
+  color: #8b95a1;
+  font-size: 14px;
+}
+
+.subscription-status {
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  background: #e6f7f1;
+  color: #087f5b;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.subscription-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  padding-top: 20px;
+}
+
+.subscription-info span {
+  display: block;
+  margin-bottom: 8px;
+
+  color: #8b95a1;
+  font-size: 13px;
+}
+
+.subscription-info strong {
+  font-size: 16px;
+}
+
+.empty-link {
+  display: inline-block;
+  margin-top: 16px;
+
+  color: #3182f6;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* 모바일 */
+
+@media (max-width: 700px) {
+  .subscription-page-header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .back-button {
+    width: 100%;
+  }
+
+  .subscription-info {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .subscription-card-header {
+    gap: 12px;
+  }
+}
