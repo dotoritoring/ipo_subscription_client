@@ -773,7 +773,27 @@ main > h1 {
   background: #fff0f0;
 }
 
+.balance-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
+  margin-top: 12px;
+  padding: 16px;
+
+  border-radius: 10px;
+
+  background: #f5f7fa;
+}
+
+.balance-info span {
+  color: #8b95a1;
+  font-size: 13px;
+}
+
+.balance-info strong {
+  font-size: 16px;
+}
 
 /* =========================
    모바일
@@ -841,11 +861,10 @@ main > h1 {
   }
 
   .subscription-filter {
-  justify-content: stretch;
-}
+    justify-content: stretch;
+  }
 
-.subscription-filter input {
-  width: 100%;
-}
-
+  .subscription-filter input {
+    width: 100%;
+  }
 }

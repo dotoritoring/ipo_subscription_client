@@ -3,7 +3,7 @@
     {
       "id": "1",
       "name": "홍길동",
-      "balance": 4850000
+      "balance": 4985000
     }
   ],
   "ipos": [
@@ -14,7 +14,7 @@
       "startDate": "2026-09-29",
       "endDate": "2026-09-30",
       "totalQuantity": 100000,
-      "remainingQuantity": 9727,
+      "remainingQuantity": 9734,
       "status": "OPEN"
     },
     {
@@ -24,7 +24,7 @@
       "startDate": "2026-10-01",
       "endDate": "2026-10-02",
       "totalQuantity": 50000,
-      "remainingQuantity": 50000,
+      "remainingQuantity": 49998,
       "status": "WAITING"
     },
     {
@@ -221,43 +221,19 @@
     },
     {
       "userId": "1",
-      "ipoId": "1",
+      "ipoId": "2",
       "quantity": 1,
-      "amount": 25000,
-      "createdAt": "2026-09-30T00:21:22.614Z",
-      "id": "Bxo_-5a"
+      "amount": 20000,
+      "createdAt": "2026-09-30T16:02:02.339Z",
+      "id": "C93ODQe"
     },
     {
       "userId": "1",
-      "ipoId": "1",
+      "ipoId": "2",
       "quantity": 1,
-      "amount": 25000,
-      "createdAt": "2026-09-30T02:26:07.502Z",
-      "id": "5FTPezN"
-    },
-    {
-      "userId": "1",
-      "ipoId": "1",
-      "quantity": 3,
-      "amount": 75000,
-      "createdAt": "2026-09-30T05:27:38.799Z",
-      "id": "iEE6NtA"
-    },
-    {
-      "userId": "1",
-      "ipoId": "1",
-      "quantity": 1,
-      "amount": 25000,
-      "createdAt": "2026-09-30T08:41:53.597Z",
-      "id": "3Z_AqA5"
-    },
-    {
-      "userId": "1",
-      "ipoId": "1",
-      "quantity": 1,
-      "amount": 25000,
-      "createdAt": "2026-09-30T08:43:50.399Z",
-      "id": "pXJ9ZWk"
+      "amount": 20000,
+      "createdAt": "2026-09-30T17:17:56.800Z",
+      "id": "pUBBy5S"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

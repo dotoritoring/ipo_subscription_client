@@ -3,28 +3,37 @@
 import Header from "@/component/Header";
 import IpoList from "@/component/IpoList";
 import { useUserStore } from "@/store/userStore";
+import { useQuery } from "@tanstack/react-query";
+import { userApi } from "../../api/user";
 import { useEffect } from "react";
 
 export default function Home() {
-  const { user, setUser } = useUserStore();
+  const { setUser } = useUserStore();
   const userId = "1";
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await fetch(`http://localhost:4000/users/${userId}`);
-        if (!response.ok) {
-          throw new Error("사용자 정보를 불러올 수 없습니다.");
-        }
+  const {
+    data: user,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["user", userId],
+    queryFn: () => userApi.getUser(userId),
+  });
 
-        const data = await response.json();
-        setUser(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchUser();
-  }, []);
+  useEffect(() => {
+    if (user) {
+      setUser(user);
+    }
+  }, [user, setUser]);
+
+  //   if (isLoading) {
+  //   return <div className="empty">사용자 정보를 불러오는 중입니다.</div>;
+  // }
+
+  if (isError) {
+    return <div className="empty">{error.message}</div>;
+  }
 
   return (
     <>

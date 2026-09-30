@@ -35,16 +35,19 @@ export const subscriptionApi = {
 
     // 청약 내역과 공모주 정보 연결
     return [...subscriptions] // .sort()는 원본 배열을 바꾸는 함수이고, subscriptions이 state로 관리되고 있으므로 직접 변경을 피하기 위해 복사해서 사용
-    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-    .map((subscription) => {
-      const ipo = ipos.find((ipo) => ipo.id === subscription.ipoId);
+      .sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+      )
+      .map((subscription) => {
+        const ipo = ipos.find((ipo) => ipo.id === subscription.ipoId);
 
-      return {
-        ...subscription,
-        ipoName: ipo?.name ?? "알 수 없는 공모주",
-        ipoPrice: ipo?.price ?? 0,
-      };
-    });
+        return {
+          ...subscription,
+          ipoName: ipo?.name ?? "알 수 없는 공모주",
+          ipoPrice: ipo?.price ?? 0,
+        };
+      });
   },
 
   // 청약 신청
@@ -86,11 +89,6 @@ export const subscriptionApi = {
 
     if (today > ipo.endDate) {
       throw new Error("청약 기간이 종료된 공모주입니다.");
-    }
-
-    // 공모주 상태 확인
-    if (ipo.status !== "OPEN") {
-      throw new Error("현재 청약할 수 없는 공모주입니다.");
     }
 
     // 청약 가능 수량 확인
