@@ -4,11 +4,13 @@ import { useState } from "react";
 import { subscriptionApi } from "../../api/subscription";
 import { useUserStore } from "@/store/userStore";
 
-export default function IpoModal({ ipo, onClose, setIpos }) {
-  const [quantity, setQuantity] = useState(1);
+export default function IpoModal({ ipo, status, onClose, setIpos }) {
+  const [quantity, setQuantity] = useState(ipo.remainingQuantity===0 ? 0: 1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { setUser } = useUserStore();
+
+  const isAvailable = status === "OPEN" && ipo.remainingQuantity > 0;
 
   const amount = ipo.price * quantity;
   const remainingPercent = (ipo.remainingQuantity / ipo.totalQuantity) * 100;
@@ -16,9 +18,12 @@ export default function IpoModal({ ipo, onClose, setIpos }) {
   const handleQuantityChange = (e) => {
     const value = Number(e.target.value);
 
-    if (value < 1) {
-      // 최소 수량
-      setQuantity(1);
+    if(!Number.isInteger(value)){
+      return;
+    }
+
+    if (value < 0) {
+      setQuantity(0);
       return;
     }
 
@@ -32,7 +37,7 @@ export default function IpoModal({ ipo, onClose, setIpos }) {
   };
 
   const handleSubscribe = async () => {
-    const confirmed = window.confirm("청약을 신청하시겠습니까?");
+    const confirmed = window.confirm(`${quantity.toLocaleString()}주를 청약하시겠습니까?`);
     if (!confirmed) return;
 
     try {
@@ -107,27 +112,37 @@ export default function IpoModal({ ipo, onClose, setIpos }) {
               {remainingPercent.toFixed(1)}% 남음
             </p>
           </div>
-          <div className="subscription-form">
+          {isAvailable ? (
+            <div className="subscription-form">
             <label htmlFor="quantity">청약 수량</label>
             <input
               id="quantity"
               type="number"
-              min="1"
+              min={ipo.remainingQuantity===0 ? 0 : 1}
               max={ipo.remainingQuantity}
               value={quantity}
               onChange={handleQuantityChange}
+              disabled={loading}
             />
             <div className="amount">
               <span>청약 금액</span>
               <strong>{amount.toLocaleString()}원</strong>
             </div>
           </div>
+          ):(
+            <div className="empty">
+              {status === "WAITING" && "아직 청약 기간이 시작되지 않았습니다."}
+              {status === "CLOSED" && "청약 기간이 종료되었습니다."}
+              {status === "OPEN" && ipo.remainingQuantity===0 && "청약 수량이 모두 소진되었습니다."}
+            </div>
+            
+          )}
           {error && <p className="error-message">{error}</p>}
 
           <button
             className="subscribe-button"
             onClick={handleSubscribe}
-            disabled={loading}
+            disabled={loading || !isAvailable || quantity <= 0}
           >
             {loading ? "청약 신청 중" : "청약 신청"}
           </button>

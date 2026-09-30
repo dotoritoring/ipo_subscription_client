@@ -1,7 +1,7 @@
 "use client";
 
 import Header from "@/component/Header";
-import IpoList from "@/component/IpoLIst";
+import IpoList from "@/component/IpoList";
 import { useUserStore } from "@/store/userStore";
 import { useEffect } from "react";
 

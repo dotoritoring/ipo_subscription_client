@@ -1,8 +1,9 @@
-export default function IpoCard({ ipo, onClick }) {
+export default function IpoCard({ ipo, onClick, status }) {
   const statusText = {
     OPEN: "청약 가능",
     WAITING: "청약 예정",
     CLOSED: "청약 종료",
+    SOLD_OUT: "청약 마감"
   };
 
   const remainingPercent = (ipo.remainingQuantity / ipo.totalQuantity) * 100;
@@ -11,8 +12,8 @@ export default function IpoCard({ ipo, onClick }) {
     <article className="ipo-card">
       <div className="ipo-card-header">
         <h3>{ipo.name}</h3>
-        <span className={`status status-${ipo.status.toLowerCase()}`}>
-          {statusText[ipo.status]}
+        <span className={`status status-${status.toLowerCase()}`}>
+          {statusText[status]}
         </span>
       </div>
       <div className="ipo-price">

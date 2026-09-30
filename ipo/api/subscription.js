@@ -34,7 +34,9 @@ export const subscriptionApi = {
     const ipos = await ipoResponse.json();
 
     // 청약 내역과 공모주 정보 연결
-    return subscriptions.map((subscription) => {
+    return [...subscriptions] // .sort()는 원본 배열을 바꾸는 함수이고, subscriptions이 state로 관리되고 있으므로 직접 변경을 피하기 위해 복사해서 사용
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+    .map((subscription) => {
       const ipo = ipos.find((ipo) => ipo.id === subscription.ipoId);
 
       return {
@@ -93,7 +95,8 @@ export const subscriptionApi = {
 
     // 청약 가능 수량 확인
     if (quantity > ipo.remainingQuantity) {
-      throw new Error("청약 가능 수량을 초과했습니다.");
+      throw new Error(`청약 가능 수량을 초과했습니다.
+        현재 최대 ${ipo.remainingQuantity.toLocaleString()}주까지 청약할 수 있습니다.`);
     }
 
     // 청약 내역 생성
@@ -232,6 +235,8 @@ export const subscriptionApi = {
       throw new Error("잔액 변경에 실패했습니다.");
     }
 
+    const updatedUserData = await updatedUser.json();
+
     try {
       // 청약 내역 삭제
       const deleteResponse = await fetch(`${BASE_URL}/${subscriptionId}`, {
@@ -259,6 +264,6 @@ export const subscriptionApi = {
       throw error;
     }
 
-    return true;
+    return updatedUserData;
   },
 };

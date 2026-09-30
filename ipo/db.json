@@ -3,7 +3,7 @@
     {
       "id": "1",
       "name": "홍길동",
-      "balance": 4925000
+      "balance": 4850000
     }
   ],
   "ipos": [
@@ -14,7 +14,7 @@
       "startDate": "2026-09-29",
       "endDate": "2026-09-30",
       "totalQuantity": 100000,
-      "remainingQuantity": 9730,
+      "remainingQuantity": 9727,
       "status": "OPEN"
     },
     {
@@ -152,30 +152,6 @@
       "ipoId": "1",
       "quantity": 1,
       "amount": 25000,
-      "createdAt": "2026-09-29T06:05:12.027Z",
-      "id": "fgJMrtmdgSQ"
-    },
-    {
-      "userId": "1",
-      "ipoId": "1",
-      "quantity": 2,
-      "amount": 50000,
-      "createdAt": "2026-09-29T06:09:54.709Z",
-      "id": "p6ZvFVy9_04"
-    },
-    {
-      "userId": "1",
-      "ipoId": "1",
-      "quantity": 1,
-      "amount": 25000,
-      "createdAt": "2026-09-29T06:10:37.437Z",
-      "id": "26NEPKRoxYU"
-    },
-    {
-      "userId": "1",
-      "ipoId": "1",
-      "quantity": 1,
-      "amount": 25000,
       "createdAt": "2026-09-29T06:10:46.373Z",
       "id": "E5--skd1nEM"
     },
@@ -242,6 +218,46 @@
       "amount": 25000,
       "createdAt": "2026-09-29T19:00:39.240Z",
       "id": "nMOGZ64"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 1,
+      "amount": 25000,
+      "createdAt": "2026-09-30T00:21:22.614Z",
+      "id": "Bxo_-5a"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 1,
+      "amount": 25000,
+      "createdAt": "2026-09-30T02:26:07.502Z",
+      "id": "5FTPezN"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 3,
+      "amount": 75000,
+      "createdAt": "2026-09-30T05:27:38.799Z",
+      "id": "iEE6NtA"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 1,
+      "amount": 25000,
+      "createdAt": "2026-09-30T08:41:53.597Z",
+      "id": "3Z_AqA5"
+    },
+    {
+      "userId": "1",
+      "ipoId": "1",
+      "quantity": 1,
+      "amount": 25000,
+      "createdAt": "2026-09-30T08:43:50.399Z",
+      "id": "pXJ9ZWk"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
