@@ -2,28 +2,43 @@
 
 import { useState } from "react";
 import { subscriptionApi } from "../../api/subscription";
-import { useUserStore } from "@/store/userStore";
+import { IPO_STATUS_TEXT } from "@/utils/ipo";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { userApi } from "../../api/user";
 
-export default function IpoModal({ ipo, status, onClose, refetchIpos }) {
+export default function IpoModal({ ipo, status, onClose }) {
   const [quantity, setQuantity] = useState(ipo.remainingQuantity === 0 ? 0 : 1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const { user, setUser } = useUserStore();
+  const queryClient = useQueryClient();
+
+  const userId = "1";
+  const {
+    data: currentUser,
+    isLoading: isUserLoading,
+    isError: isUserError
+  } = useQuery({
+    queryKey:["user", userId],
+    queryFn: ()=>userApi.getUser(userId)
+  })
 
   const isAvailable = status === "OPEN" && ipo.remainingQuantity > 0;
 
   const amount = ipo.price * quantity;
-  const checkBalance = user && amount > user.balance;
+  const checkBalance = currentUser && amount > currentUser.balance;
   const remainingPercent = (ipo.remainingQuantity / ipo.totalQuantity) * 100;
 
   const handleQuantityChange = (e) => {
-    const value = Number(e.target.value);
+    const value = e.target.value;
 
-    if (!Number.isInteger(value)) {
+    if(value === ""){
+      setQuantity(0);
       return;
     }
 
-    if (value < 0) {
+    const number = Number(value);
+
+    if (!Number.isInteger(number)|| number < 0) {
       setQuantity(0);
       return;
     }
@@ -34,7 +49,7 @@ export default function IpoModal({ ipo, status, onClose, refetchIpos }) {
       return;
     }
 
-    setQuantity(value);
+    setQuantity(number);
   };
 
   const handleSubscribe = async () => {
@@ -47,17 +62,27 @@ export default function IpoModal({ ipo, status, onClose, refetchIpos }) {
       setLoading(true);
       setError(null);
 
-      // 임시 사용자
-      const userId = "1";
-
       const result = await subscriptionApi.subscriptionIpo(
         userId,
         ipo.id,
         quantity,
       );
-      setUser(result.user);
 
-      await refetchIpos();
+      // React Query의 캐시가 기존 데이터가 아닌 새로운 데이터로 업데이트 해주기 위함
+      // MyPage의 자산 통계 갱신
+      await queryClient.invalidateQueries({
+        queryKey:["subscriptions", userId]
+      })
+
+      // 사용자 정보 갱신
+      await queryClient.invalidateQueries({
+        queryKey: ["user", userId],
+      });
+
+      // 공모주 남은 수량 갱신
+      await queryClient.invalidateQueries({
+        queryKey: ["ipos"],
+      });
 
       alert("청약 신청이 완료되었습니다.");
       onClose();
@@ -74,7 +99,7 @@ export default function IpoModal({ ipo, status, onClose, refetchIpos }) {
         <div className="modal-header">
           <div>
             <h2>{ipo.name}</h2>
-            <span className="status status-open">청약 가능</span>
+            <span className={`status status-${status.toLowerCase()}`}>{IPO_STATUS_TEXT[status]}</span>
           </div>
           <button className="modal-close" onClick={onClose}>
             X
@@ -128,13 +153,13 @@ export default function IpoModal({ ipo, status, onClose, refetchIpos }) {
               </div>
               <div className="balance-info">
                 <span>보유 금액</span>
-                <strong> {user?.balance?.toLocaleString() ?? 0}원</strong>
+                <strong> {currentUser.balance.toLocaleString() ?? 0}원</strong>
               </div>
               {checkBalance && (
                 <p className="error-message">
                   보유 금액이 부족합니다.
                   <br />
-                  청약 가능 금액: {user.balance.toLocaleString()}원
+                  청약 가능 금액: {currentUser.balance.toLocaleString()}원
                 </p>
               )}
             </div>

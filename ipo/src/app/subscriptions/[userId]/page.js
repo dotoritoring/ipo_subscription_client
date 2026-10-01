@@ -1,26 +1,23 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { use, useState } from "react";
 import { subscriptionApi } from "../../../../api/subscription";
 import Link from "next/link";
-import Header from "@/component/Header";
-import { useUserStore } from "@/store/userStore";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export default function SubscriptionPage({ params }) {
   const { userId } = use(params);
+  const queryClient = useQueryClient();
 
-  const { setUser } = useUserStore();
   const [cancelLoading, setCancelLoading] = useState(null);
   const [search, setSearch] = useState("");
-  const [cancelError, setCancelError] = useState(null);
+
   // data를 subscriptions 이름으로 바꿔서 사용, 처음 렌더링될 때 API 응답이 오기 전까지는 data가 있을 수 없으므로 빈 배열로 초기화 필요
   const {
     data: subscriptions = [],
     isLoading,
     isError,
     error,
-    refetch,
   } = useQuery({
     queryKey: ["subscriptions", userId],
     queryFn: () => subscriptionApi.getSubscriptions(userId),
@@ -37,15 +34,25 @@ export default function SubscriptionPage({ params }) {
 
     try {
       setCancelLoading(subscriptionId);
-      setCancelError(null);
 
-      const updatedUser =
-        await subscriptionApi.cancelSubscription(subscriptionId);
-      setUser(updatedUser);
+      await subscriptionApi.cancelSubscription(subscriptionId);
 
-      await refetch();
+      // 청약 목록 갱신
+      await queryClient.invalidateQueries({
+        queryKey:["subscriptions", userId]
+      })
+
+      // 사용자 정보 갱신 (잔액)
+      await queryClient.invalidateQueries({
+        queryKey:["user", userId]
+      })
+
+      // 공모주 갱신 (수량)
+      await queryClient.invalidateQueries({
+        queryKey:["ipos"]
+      })
     } catch (error) {
-      setCancelError(error.message);
+      window.alert(error.message);
     } finally {
       setCancelLoading(null);
     }
@@ -53,17 +60,12 @@ export default function SubscriptionPage({ params }) {
 
   return (
     <>
-      <Header />
       <main>
         <div className="subscription-page-header">
           <div>
             <h1>내 청약 내역</h1>
             <p>내가 신청한 공모주 청약 내역을 확인할 수 있습니다.</p>
           </div>
-
-          <Link href="/" className="back-button">
-            공모주 목록
-          </Link>
         </div>
 
         <div className="subscription-filter">
@@ -79,8 +81,6 @@ export default function SubscriptionPage({ params }) {
           <div className="empty">청약 내역을 불러오는 중입니다.</div>
         )}
         {isError && <div className="empty">{error.message}</div>}
-
-        {cancelError && <p className="error-message">{cancelError}</p>}
 
         {!isLoading && !isError && subscriptions.length === 0 && (
           <div className="empty">

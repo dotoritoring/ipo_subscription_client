@@ -54,9 +54,9 @@ export const subscriptionApi = {
   subscriptionIpo: async (userId, ipoId, quantity) => {
     let ipoUpdated = false;
 
-    if (quantity <= 0) {
-      throw new Error("유효하지 않은 청약 수량입니다.");
-    }
+  if (!Number.isInteger(quantity) || quantity <= 0) {
+    throw new Error("청약 수량은 1주 이상의 정수여야 합니다.");
+  }
 
     const userResponse = await fetch(`${USER_BASE_URL}/${userId}`);
     if (!userResponse.ok) {
@@ -93,8 +93,7 @@ export const subscriptionApi = {
 
     // 청약 가능 수량 확인
     if (quantity > ipo.remainingQuantity) {
-      throw new Error(`청약 가능 수량을 초과했습니다.
-        현재 최대 ${ipo.remainingQuantity.toLocaleString()}주까지 청약할 수 있습니다.`);
+      throw new Error(`청약 가능 수량을 초과했습니다. 현재 최대 ${ipo.remainingQuantity.toLocaleString()}주까지 청약할 수 있습니다.`);
     }
 
     // 청약 내역 생성
@@ -229,7 +228,16 @@ export const subscriptionApi = {
       body: JSON.stringify({ balance: newBalance }),
     });
 
-    if (!updatedUser.ok) {
+    if (!updatedUser.ok) { 
+      // 사용자 잔액 변경에 실패했으므로 위에서 변경한 공모주 수량을 원래대로 복구
+      await fetch(`${IPO_BASE_URL}/${subscription.ipoId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          remainingQuantity: ipo.remainingQuantity,
+        }),
+      });
+
       throw new Error("잔액 변경에 실패했습니다.");
     }
 

@@ -1,19 +1,30 @@
-export default function IpoCard({ ipo, onClick, status }) {
-  const statusText = {
-    OPEN: "청약 가능",
-    WAITING: "청약 예정",
-    CLOSED: "청약 종료",
-    SOLD_OUT: "청약 마감"
-  };
+import {IPO_STATUS_TEXT } from "@/utils/ipo";
 
+export default function IpoCard({ ipo, status, onClick, isFavorite, onFavoriteClick }) {
   const remainingPercent = (ipo.remainingQuantity / ipo.totalQuantity) * 100;
 
   return (
     <article className="ipo-card">
       <div className="ipo-card-header">
-        <h3>{ipo.name}</h3>
+        <div className="ipo-title">
+          <h3>{ipo.name}</h3>
+
+          {onFavoriteClick && (
+            <button
+              type="button"
+              className={`favorite-button ${isFavorite ? "active" : ""}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                onFavoriteClick();
+              }}
+              aria-label={isFavorite ? "관심 해제" : "관심 등록"}
+            >
+              {isFavorite ? "★" : "☆"}
+            </button>
+          )}
+        </div>
         <span className={`status status-${status.toLowerCase()}`}>
-          {statusText[status]}
+          {IPO_STATUS_TEXT[status]}
         </span>
       </div>
       <div className="ipo-price">

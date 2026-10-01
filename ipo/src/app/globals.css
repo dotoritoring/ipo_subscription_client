@@ -96,9 +96,58 @@ main > h1 {
   margin-bottom: 28px;
 }
 
+/* 공모주 이름 + 찜 버튼 */
+.ipo-title {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  min-width: 0;
+}
+
 .ipo-card-header h3 {
   margin: 0;
+
   font-size: 20px;
+}
+
+/* =========================
+   찜 버튼
+========================= */
+
+.favorite-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #cbd0d8;
+
+  font-size: 25px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.favorite-button:hover {
+  color:  #f5b301;;
+}
+
+.favorite-button.active {
+  color: #f5b301;
 }
 
 /* =========================
@@ -112,6 +161,8 @@ main > h1 {
 
   font-size: 12px;
   font-weight: 600;
+
+  white-space: nowrap;
 }
 
 .status-open {
@@ -127,6 +178,11 @@ main > h1 {
 .status-closed {
   color: #868e96;
   background: #f1f3f5;
+}
+
+.status-sold_out {
+  color: #c92a2a;
+  background: #fff0f0;
 }
 
 /* =========================
@@ -400,6 +456,28 @@ main > h1 {
 
 .amount strong {
   font-size: 20px;
+}
+
+.balance-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 12px;
+  padding: 16px;
+
+  border-radius: 10px;
+
+  background: #f5f7fa;
+}
+
+.balance-info span {
+  color: #8b95a1;
+  font-size: 13px;
+}
+
+.balance-info strong {
+  font-size: 16px;
 }
 
 .subscribe-button {
@@ -739,6 +817,7 @@ main > h1 {
 .subscription-filter {
   display: flex;
   justify-content: flex-end;
+
   margin-bottom: 20px;
 }
 
@@ -765,35 +844,214 @@ main > h1 {
 
 .subscription-filter input:focus {
   border-color: #3182f6;
+
   box-shadow: 0 0 0 3px rgba(49, 130, 246, 0.1);
 }
 
-.status-sold_out {
-  color: #c92a2a;
-  background: #fff0f0;
+/* =========================
+   내 자산
+========================= */
+
+.my-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-bottom: 32px;
 }
 
-.balance-info {
+.my-page-header h1 {
+  margin: 0 0 8px;
+
+  font-size: 32px;
+}
+
+.my-page-header p {
+  margin: 0;
+
+  color: #6b7280;
+}
+
+/* =========================
+   자산 요약
+========================= */
+
+.asset-section {
+  margin-bottom: 40px;
+
+  border: 1px solid #e5e8eb;
+  border-radius: 16px;
+
+  background: white;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+
+  overflow: hidden;
+}
+
+.asset-balance {
+  padding: 28px;
+
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.asset-balance span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #8b95a1;
+
+  font-size: 14px;
+}
+
+.asset-balance strong {
+  font-size: 30px;
+}
+
+.asset-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.asset-summary > div {
+  padding: 24px 28px;
+}
+
+.asset-summary > div + div {
+  border-left: 1px solid #f0f1f3;
+}
+
+.asset-summary span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #8b95a1;
+
+  font-size: 13px;
+}
+
+.asset-summary strong {
+  font-size: 18px;
+}
+
+/* =========================
+   관심 공모주
+========================= */
+
+.favorite-section {
+  width: 100%;
+}
+
+.favorite-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.favorite-section-header h2 {
+  margin: 0 0 8px;
+
+  font-size: 24px;
+}
+
+.favorite-section-header p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+.favorite-section-header > span {
+  color: #3182f6;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.favorite-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.favorite-card {
+  padding: 20px 24px;
+
+  border: 1px solid #e5e8eb;
+  border-radius: 14px;
+
+  background: white;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.favorite-card-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  margin-top: 12px;
-  padding: 16px;
+  padding-bottom: 16px;
 
-  border-radius: 10px;
-
-  background: #f5f7fa;
+  border-bottom: 1px solid #f0f1f3;
 }
 
-.balance-info span {
+.favorite-card-title {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.favorite-card-title h3 {
+  margin: 0;
+
+  font-size: 18px;
+}
+
+.favorite-star {
+  color: #f5b301;
+
+  font-size: 20px;
+}
+
+.favorite-card-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+
+  padding-top: 16px;
+}
+
+.favorite-card-detail span {
+  display: block;
+
+  margin-bottom: 6px;
+
   color: #8b95a1;
-  font-size: 13px;
+
+  font-size: 12px;
 }
 
-.balance-info strong {
-  font-size: 16px;
+.favorite-card-detail strong {
+  font-size: 14px;
 }
+
+.favorite-empty {
+  padding: 60px 0;
+
+  border: 1px solid #e5e8eb;
+  border-radius: 14px;
+
+  background: white;
+}
+
 
 /* =========================
    모바일
@@ -824,6 +1082,23 @@ main > h1 {
 
   .ipo-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* 공모주 카드 */
+
+  .ipo-card-header {
+    align-items: flex-start;
+  }
+
+  .ipo-title {
+    min-width: 0;
+  }
+
+  .ipo-card-header h3 {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   /* 내 청약 */
@@ -866,5 +1141,34 @@ main > h1 {
 
   .subscription-filter input {
     width: 100%;
+  }
+
+  .my-page-header {
+    align-items: stretch;
+
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  .asset-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .asset-summary > div + div {
+    border-top: 1px solid #f0f1f3;
+    border-left: 0;
+  }
+
+  .favorite-card-info {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .favorite-card-detail {
+    grid-template-columns: 1fr;
   }
 }

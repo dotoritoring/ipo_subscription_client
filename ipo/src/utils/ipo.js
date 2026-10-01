@@ -9,3 +9,10 @@ export const getIpoStatus = (ipo) => {
 
   return "OPEN";
 };
+
+export const IPO_STATUS_TEXT = {
+  OPEN: "청약 가능",
+  WAITING: "청약 예정",
+  CLOSED: "청약 종료",
+  SOLD_OUT: "청약 마감",
+};
