@@ -5,7 +5,6 @@ import { userApi } from "../../../api/user";
 import { subscriptionApi } from "../../../api/subscription";
 import { ipoApi } from "../../../api/ipo";
 import { getIpoStatus } from "@/utils/ipo";
-import Link from "next/link";
 import { useState } from "react";
 import { useFavoriteIpo } from "@/hooks/useFavoriteIpo";
 import IpoCard from "@/component/IpoCard";
@@ -73,7 +72,6 @@ export default function MyPage(){
         </div>
       </div>
 
-      {/* 자산 요약 */}
       <section className="asset-section">
         <div className="asset-balance">
           <span>보유 금액</span>

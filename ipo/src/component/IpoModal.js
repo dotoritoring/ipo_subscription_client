@@ -10,6 +10,7 @@ export default function IpoModal({ ipo, status, onClose }) {
   const [quantity, setQuantity] = useState(ipo.remainingQuantity === 0 ? 0 : 1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isSubscribed, setIsSubscribed] = useState(false);
   const queryClient = useQueryClient();
 
   const userId = "1";
@@ -25,7 +26,7 @@ export default function IpoModal({ ipo, status, onClose }) {
   const isAvailable = status === "OPEN" && ipo.remainingQuantity > 0;
 
   const amount = ipo.price * quantity;
-  const checkBalance = currentUser && amount > currentUser.balance;
+  const checkBalance = !isSubscribed && currentUser && amount > currentUser.balance;
   const remainingPercent = (ipo.remainingQuantity / ipo.totalQuantity) * 100;
 
   const handleQuantityChange = (e) => {
@@ -43,7 +44,7 @@ export default function IpoModal({ ipo, status, onClose }) {
       return;
     }
 
-    if (value > ipo.remainingQuantity) {
+    if (number > ipo.remainingQuantity) {
       // 최대 수량
       setQuantity(ipo.remainingQuantity);
       return;
@@ -53,6 +54,7 @@ export default function IpoModal({ ipo, status, onClose }) {
   };
 
   const handleSubscribe = async () => {
+
     const confirmed = window.confirm(
       `${quantity.toLocaleString()}주를 청약하시겠습니까?`,
     );
@@ -62,11 +64,13 @@ export default function IpoModal({ ipo, status, onClose }) {
       setLoading(true);
       setError(null);
 
-      const result = await subscriptionApi.subscriptionIpo(
+      await subscriptionApi.subscriptionIpo(
         userId,
         ipo.id,
         quantity,
       );
+
+      setIsSubscribed(true);
 
       // React Query의 캐시가 기존 데이터가 아닌 새로운 데이터로 업데이트 해주기 위함
       // MyPage의 자산 통계 갱신

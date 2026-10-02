@@ -3,9 +3,10 @@
     {
       "id": "1",
       "name": "홍길동",
-      "balance": 5604000,
+      "balance": 1845000,
       "favoriteIpos": [
-        "6"
+        "2",
+        "8"
       ]
     }
   ],
@@ -15,9 +16,9 @@
       "name": "ABC전자",
       "price": 25000,
       "startDate": "2026-09-29",
-      "endDate": "2026-09-30",
-      "totalQuantity": 100000,
-      "remainingQuantity": 9734
+      "endDate": "2026-10-02",
+      "totalQuantity": 1000,
+      "remainingQuantity": 326
     },
     {
       "id": "2",
@@ -25,8 +26,8 @@
       "price": 20000,
       "startDate": "2026-10-01",
       "endDate": "2026-10-02",
-      "totalQuantity": 50000,
-      "remainingQuantity": 49995
+      "totalQuantity": 800,
+      "remainingQuantity": 47
     },
     {
       "id": "3",
@@ -34,7 +35,7 @@
       "price": 15000,
       "startDate": "2026-09-25",
       "endDate": "2026-09-26",
-      "totalQuantity": 30000,
+      "totalQuantity": 500,
       "remainingQuantity": 0
     },
     {
@@ -42,9 +43,9 @@
       "name": "미래로봇",
       "price": 32000,
       "startDate": "2026-09-28",
-      "endDate": "2026-09-29",
-      "totalQuantity": 120000,
-      "remainingQuantity": 120000
+      "endDate": "2026-10-01",
+      "totalQuantity": 1200,
+      "remainingQuantity": 1200
     },
     {
       "id": "5",
@@ -52,7 +53,7 @@
       "price": 15000,
       "startDate": "2026-09-20",
       "endDate": "2026-09-21",
-      "totalQuantity": 70000,
+      "totalQuantity": 700,
       "remainingQuantity": 0
     },
     {
@@ -60,9 +61,9 @@
       "name": "넥스트AI",
       "price": 45000,
       "startDate": "2026-09-30",
-      "endDate": "2026-10-01",
-      "totalQuantity": 90000,
-      "remainingQuantity": 90000
+      "endDate": "2026-10-02",
+      "totalQuantity": 600,
+      "remainingQuantity": 12
     },
     {
       "id": "7",
@@ -70,17 +71,17 @@
       "price": 28000,
       "startDate": "2026-10-02",
       "endDate": "2026-10-03",
-      "totalQuantity": 60000,
-      "remainingQuantity": 60000
+      "totalQuantity": 1000,
+      "remainingQuantity": 684
     },
     {
       "id": "8",
       "name": "스마트모빌리티",
       "price": 22000,
       "startDate": "2026-09-29",
-      "endDate": "2026-09-30",
-      "totalQuantity": 110000,
-      "remainingQuantity": 47800
+      "endDate": "2026-10-02",
+      "totalQuantity": 900,
+      "remainingQuantity": 158
     },
     {
       "id": "9",
@@ -88,7 +89,7 @@
       "price": 12500,
       "startDate": "2026-09-18",
       "endDate": "2026-09-19",
-      "totalQuantity": 55000,
+      "totalQuantity": 600,
       "remainingQuantity": 0
     },
     {
@@ -97,8 +98,8 @@
       "price": 30000,
       "startDate": "2026-10-05",
       "endDate": "2026-10-06",
-      "totalQuantity": 75000,
-      "remainingQuantity": 75000
+      "totalQuantity": 800,
+      "remainingQuantity": 800
     },
     {
       "id": "11",
@@ -106,8 +107,8 @@
       "price": 38000,
       "startDate": "2026-10-07",
       "endDate": "2026-10-08",
-      "totalQuantity": 95000,
-      "remainingQuantity": 95000
+      "totalQuantity": 700,
+      "remainingQuantity": 700
     },
     {
       "id": "12",
@@ -115,8 +116,8 @@
       "price": 17000,
       "startDate": "2026-10-09",
       "endDate": "2026-10-10",
-      "totalQuantity": 65000,
-      "remainingQuantity": 65000
+      "totalQuantity": 900,
+      "remainingQuantity": 900
     },
     {
       "id": "13",
@@ -125,121 +126,73 @@
       "startDate": "2026-09-29",
       "endDate": "2026-10-01",
       "totalQuantity": 100,
-      "remainingQuantity": 97
+      "remainingQuantity": 0
     }
   ],
   "subscriptions": [
     {
       "userId": "1",
       "ipoId": "1",
-      "quantity": 2500,
-      "amount": 62500000,
-      "createdAt": "2026-09-29T06:04:58.468Z",
-      "id": "l7Sjl8kC9B0"
+      "quantity": 8,
+      "amount": 200000,
+      "createdAt": "2026-09-29T09:10:00.000Z",
+      "id": "sub-001"
     },
     {
       "userId": "1",
       "ipoId": "1",
-      "quantity": 1,
-      "amount": 25000,
-      "createdAt": "2026-09-29T06:10:46.373Z",
-      "id": "E5--skd1nEM"
-    },
-    {
-      "userId": "1",
-      "ipoId": "1",
-      "quantity": 1,
-      "amount": 25000,
-      "createdAt": "2026-09-29T06:23:24.812Z",
-      "id": "4NbzqhIrOVA"
-    },
-    {
-      "userId": "1",
-      "ipoId": "1",
-      "quantity": 100,
-      "amount": 2500000,
-      "createdAt": "2026-09-29T06:26:25.789Z",
-      "id": "L0NSwvdW6Ak"
-    },
-    {
-      "userId": "1",
-      "ipoId": "13",
-      "quantity": 1,
-      "amount": 7000,
-      "createdAt": "2026-09-29T06:34:28.077Z",
-      "id": "Cm_j9oQVOYM"
-    },
-    {
-      "userId": "1",
-      "ipoId": "1",
-      "quantity": 1,
-      "amount": 25000,
-      "createdAt": "2026-09-29T06:38:48.856Z",
-      "id": "qI8FGb4etMM"
-    },
-    {
-      "userId": "1",
-      "ipoId": "1",
-      "quantity": 1,
-      "amount": 25000,
-      "createdAt": "2026-09-29T08:46:05.802Z",
-      "id": "ILOHIHC5A-A"
-    },
-    {
-      "userId": "1",
-      "ipoId": "1",
-      "quantity": 1,
-      "amount": 25000,
-      "createdAt": "2026-09-29T18:00:26.475Z",
-      "id": "F1dRdNE"
-    },
-    {
-      "userId": "1",
-      "ipoId": "1",
-      "quantity": 1,
-      "amount": 25000,
-      "createdAt": "2026-09-29T19:00:39.240Z",
-      "id": "nMOGZ64"
+      "quantity": 5,
+      "amount": 125000,
+      "createdAt": "2026-09-29T10:35:00.000Z",
+      "id": "sub-002"
     },
     {
       "userId": "1",
       "ipoId": "2",
-      "quantity": 1,
-      "amount": 20000,
-      "createdAt": "2026-09-30T16:02:02.339Z",
-      "id": "C93ODQe"
+      "quantity": 10,
+      "amount": 200000,
+      "createdAt": "2026-10-01T09:15:00.000Z",
+      "id": "sub-003"
     },
     {
       "userId": "1",
       "ipoId": "2",
-      "quantity": 1,
-      "amount": 20000,
-      "createdAt": "2026-09-30T17:17:56.800Z",
-      "id": "pUBBy5S"
-    },
-    {
-      "userId": "1",
-      "ipoId": "2",
-      "quantity": "3",
+      "quantity": 3,
       "amount": 60000,
-      "createdAt": "2026-10-01T01:14:39.862Z",
-      "id": "ypTLCS6"
+      "createdAt": "2026-10-01T11:20:00.000Z",
+      "id": "sub-004"
+    },
+    {
+      "userId": "1",
+      "ipoId": "6",
+      "quantity": 4,
+      "amount": 180000,
+      "createdAt": "2026-09-30T09:05:00.000Z",
+      "id": "sub-005"
+    },
+    {
+      "userId": "1",
+      "ipoId": "6",
+      "quantity": 2,
+      "amount": 90000,
+      "createdAt": "2026-09-30T12:40:00.000Z",
+      "id": "sub-006"
+    },
+    {
+      "userId": "1",
+      "ipoId": "8",
+      "quantity": 7,
+      "amount": 154000,
+      "createdAt": "2026-09-29T14:20:00.000Z",
+      "id": "sub-007"
     },
     {
       "userId": "1",
       "ipoId": "13",
-      "quantity": 1,
-      "amount": 7000,
-      "createdAt": "2026-10-01T06:59:19.637Z",
-      "id": "AfIq5ir"
-    },
-    {
-      "userId": "1",
-      "ipoId": "13",
-      "quantity": 1,
-      "amount": 7000,
-      "createdAt": "2026-10-01T06:59:28.713Z",
-      "id": "TaW2dmt"
+      "quantity": 2,
+      "amount": 14000,
+      "createdAt": "2026-09-29T16:30:00.000Z",
+      "id": "sub-008"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -33,7 +33,6 @@ export default function IpoList() {
     data: ipos = [],
     isLoading:isIpoLoading,
     isError: isIpoError,
-    refetch,
   } = useQuery({
     queryKey: ["ipos"],
     queryFn: ipoApi.getIpos,
