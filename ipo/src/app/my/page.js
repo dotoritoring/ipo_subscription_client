@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useFavoriteIpo } from "@/hooks/useFavoriteIpo";
 import IpoCard from "@/component/IpoCard";
 import IpoModal from "@/component/IpoModal";
+import { getSubscriptionStats } from "@/utils/subscription";
 
 export default function MyPage(){
      const [selectedIpo, setSelectedIpo] = useState(null);
@@ -52,17 +53,10 @@ export default function MyPage(){
     }
 
     // 자산 통계
-    const totalQuantity = subscriptions.reduce((acc, subscription)=> acc + Number(subscription.quantity) , 0)
-    const totalAmount = subscriptions.reduce((acc, subscription) => acc + Number(subscription.amount), 0)
-    // 청약한 공모주 종류 수
-    const subscribedIpoCount = new Set(subscriptions.map(subscription => subscription.ipoId)).size;
-
+    const {totalQuantity, totalAmount, subscribedIpoCount} = getSubscriptionStats(subscriptions);
     // 관심 공모주
     const favoriteIpos = ipos.filter((ipo)=>currentUser?.favoriteIpos?.includes(ipo.id))
-
-    const handleIpoClick = (ipo) => {setSelectedIpo(ipo);};
-    const handleCloseModal = () => {setSelectedIpo(null);};
-
+    
     return (
     <main>
       <div className="my-page-header">
@@ -96,7 +90,7 @@ export default function MyPage(){
           </div>
 
           <div>
-            <span>청약 공모주</span>
+            <span>청약 종목</span>
             <strong>{subscribedIpoCount}개</strong>
           </div>
         </div>
@@ -127,9 +121,8 @@ export default function MyPage(){
                   ipo={ipo}
                   status={status}
                   isFavorite={true}
-                  onFavoriteClick={() => {toggleFavorite(ipo.id)}}
-
-                  onClick={() => handleIpoClick(ipo)}
+                  onFavoriteClick={() => toggleFavorite(ipo.id)}
+                  onClick={() => setSelectedIpo(ipo)}
                 />
               );
             })}
@@ -140,7 +133,7 @@ export default function MyPage(){
         <IpoModal
           ipo={selectedIpo}
           status={getIpoStatus(selectedIpo)}
-          onClose={handleCloseModal}
+          onClose={()=>setSelectedIpo(null)}
         />
       )}
     </main>
